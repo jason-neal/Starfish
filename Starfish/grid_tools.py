@@ -203,7 +203,12 @@ class PHOENIXGridInterface(RawGridInterface):
             base = os.path.expandvars(self.base)
             wl_file = fits.open(base + "WAVE_PHOENIX-ACES-AGSS-COND-2011.fits")
         except OSError:
-            raise C.GridError("Wavelength file improperly specified.")
+            # also try  .fits.gz
+            try:
+                base = os.path.expandvars(self.base)
+                wl_file = fits.open(base + "WAVE_PHOENIX-ACES-AGSS-COND-2011.fits.gz")
+            except OSError:
+                raise C.GridError("Wavelength file improperly specified.")
 
         w_full = wl_file[0].data
         wl_file.close()
