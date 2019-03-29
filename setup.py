@@ -1,5 +1,5 @@
 import sys
-from setuptools import setup, Extension
+from setuptools import setup, Extension, find_packages
 import builtins
 import platform
 
@@ -53,7 +53,7 @@ setup(
     version=Starfish.__version__,
     author="Ian Czekala",
     author_email="iancze",
-    packages=["Starfish"],
+    packages=find_packages(),
     url="https://github.com/iancze/Starfish",
     download_url="https://github.com/iancze/Starfish/archive/master.zip",
     license="BSD",
